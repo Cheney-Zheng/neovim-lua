@@ -49,5 +49,9 @@ return {
                 },
             })
         end
+    },
+    {
+        "arkav/lualine-lsp-progress",
+        lazy = true,
     }
 }

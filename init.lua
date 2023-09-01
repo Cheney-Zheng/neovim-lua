@@ -1,7 +1,7 @@
 -- 基础配置
---require("basic")
+require("basic")
 -- 快捷键映射
---require("keybindings")
+require("keybindings")
 -- Packer插件管理
 require("plugins")
 -- 主题设置
