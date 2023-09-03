@@ -8,10 +8,8 @@ require("plugins")
 require("colorscheme")
 -- 自动命令
 --require("autocmds")
--- 内置LSP
---require("lsp.setup")
---require("lsp.cmp")
---require("lsp.ui")
+-- 内置LSP美化
+require("lsp.ui")
 -- 格式化
 -- require("lsp.formatter")
 --require("lsp.null-ls")
