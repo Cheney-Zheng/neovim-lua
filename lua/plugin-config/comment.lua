@@ -1,9 +1,3 @@
-local status, comment = pcall(require, "Comment")
-if not status then
-  vim.notify("没有找到 Comment")
-  return
-end
-
 local default_opts = {
   ---Add a space b/w comment and the line
   ---@type boolean|fun():boolean
@@ -74,5 +68,12 @@ local default_opts = {
   post_hook = nil,
 }
 
--- 关闭了extra快捷键，只用keybindings里定义的基础快捷键
-comment.setup(vim.tbl_deep_extend("force", default_opts, require("keybindings").comment))
+return {
+    {
+        "numToStr/Comment.nvim",
+        config = function()
+            -- 关闭了extra快捷键，只用keybindings里定义的基础快捷键
+            require("Comment").setup(vim.tbl_deep_extend("force", default_opts, require("keybindings").comment))
+        end
+    }
+}
