@@ -20,6 +20,7 @@ local servers = {
   rust_analyzer = require("lsp.config.rust"),
   yamlls = require("lsp.config.yamlls"),
   remark_ls = require("lsp.config.markdown"),
+  clangd = require("lsp.config.clangd"),
 }
 
 for name, config in pairs(servers) do

@@ -14,11 +14,11 @@ return {
                     enable = false,
                 },
                 -- project plugin 需要这样设置
-                update_cwd = true,
-                update_focused_file = {
-                    enable = true,
-                    update_cwd = true,
-                },
+                -- update_cwd = true,
+                -- update_focused_file = {
+                --     enable = true,
+                --     update_cwd = true,
+                -- },
                 filters = {
                     -- 隐藏 .文件
                     dotfiles = true,
