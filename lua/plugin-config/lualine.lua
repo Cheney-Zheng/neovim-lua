@@ -6,7 +6,8 @@ return {
                 options = {
                     -- 指定皮肤
                     -- https://github.com/nvim-lualine/lualine.nvim/blob/master/THEMES.md
-                    theme = "tokyonight",
+                    -- theme = "tokyonight",
+                    theme = "gruvbox-material",
                     -- 分割线
                     component_separators = {
                         left = "|",
