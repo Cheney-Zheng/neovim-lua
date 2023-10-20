@@ -47,6 +47,8 @@ map("n", "<C-d>", "10j", opt)
 -- magic search
 map("n", "/", "/\\v", { noremap = true, silent = false })
 map("v", "/", "/\\v", { noremap = true, silent = false })
+map("n", "<leader>s", ":set hls<CR>", opt)
+map("n", "<leader>v", ":set nohlsearch<CR>", opt)
 
 -- visual模式下缩进代码
 map("v", "<", "<gv", opt)
@@ -124,36 +126,23 @@ map("n", "Z", ":foldopen<CR>", opt)
 -- nvim-tree
 map("n", "<A-m>", ":NvimTreeToggle<CR>", opt)
 map("n", "<leader>m", ":NvimTreeToggle<CR>", opt)
+map("n", "<leader>p", ":NvimTreeCollapse<CR>", opt)
 -- 列表快捷键
-pluginKeys.nvimTreeList = { -- 打开文件或文件夹
-  { key = { "o", "<2-LeftMouse>" }, action = "edit" },
-  { key = "<CR>", action = "system_open" },
-  -- v分屏打开文件
-  { key = "v", action = "vsplit" },
-  -- h分屏打开文件
-  { key = "h", action = "split" },
-  -- Ignore (node_modules)
-  { key = "i", action = "toggle_ignored" },
-  -- Hide (dotfiles)
-  { key = ".", action = "toggle_dotfiles" },
-  { key = "R", action = "refresh" },
-  -- 文件操作
-  { key = "a", action = "create" },
-  { key = "d", action = "remove" },
-  { key = "r", action = "rename" },
-  { key = "x", action = "cut" },
-  { key = "c", action = "copy" },
-  { key = "p", action = "paste" },
-  { key = "y", action = "copy_name" },
-  { key = "Y", action = "copy_path" },
-  { key = "gy", action = "copy_absolute_path" },
-  { key = "I", action = "toggle_file_info" },
-  { key = "n", action = "tabnew" },
-  -- 进入下一级
-  { key = { "]" }, action = "cd" },
-  -- 进入上一级
-  { key = { "[" }, action = "dir_up" },
-}
+pluginKeys.nvim_tree_on_attach = function(api, bufnr)
+  local function opts(desc)
+    return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
+  end
+
+  --default mappings
+  api.config.mappings.default_on_attach(bufnr)
+
+  -- custom mappings
+  vim.keymap.set("n", "?", api.tree.toggle_help, opts("Help"))
+  vim.keymap.set("n", "<C-o>", api.node.open.vertical, opts("Open: Vertical Split"))
+  vim.keymap.set("n", "o", api.node.open.no_window_picker, opts("Open: no_window_picker"))
+  vim.keymap.set("n", "O", api.node.open.edit, opts("Open"))
+end
+
 -- bufferline
 -- 左右Tab切换
 map("n", "<C-h>", ":BufferLineCyclePrev<CR>", opt)
@@ -398,7 +387,7 @@ end
 -- 特殊lazygit 窗口，需要安装lazygit
 -- <leader>tg lazygit
 pluginKeys.mapToggleTerm = function(toggleterm)
-  vim.keymap.set({ "n", "t" }, "<leader>ta", toggleterm.toggleA)
+  vim.keymap.set({ "n", "t" }, "<leader>t", toggleterm.toggleA)
   vim.keymap.set({ "n", "t" }, "<leader>tb", toggleterm.toggleB)
   vim.keymap.set({ "n", "t" }, "<leader>tc", toggleterm.toggleC)
   vim.keymap.set({ "n", "t" }, "<leader>tg", toggleterm.toggleG)
