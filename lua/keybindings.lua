@@ -172,6 +172,12 @@ map("n", "<leader>bp", ":BufferLinePickClose<CR>", opt)
 -- Telescope
 map("n", "<C-p>", ":Telescope find_files<CR>", opt)
 map("n", "<C-f>", ":Telescope live_grep<CR>", opt)
+
+-- nvim-osc52
+map("n", "<leader>c", '"+y', opt)
+map("n", "<leader>cc", '"+yy', opt)
+map("v", "<leader>c", '"+y', opt)
+
 -- Telescope 列表中 插入模式快捷键
 pluginKeys.telescopeList = {
   i = {
