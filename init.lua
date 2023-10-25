@@ -7,7 +7,7 @@ require("plugins")
 -- 主题设置
 require("colorscheme")
 -- 自动命令
---require("autocmds")
+require("autocmds")
 -- 内置LSP美化
 require("lsp.ui")
 -- 格式化
@@ -19,4 +19,3 @@ require("lsp.ui")
 -- utils
 -- 复制到windows剪贴板
 -- require('utils.fix-yank')]]
-
