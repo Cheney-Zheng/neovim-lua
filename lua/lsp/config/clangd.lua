@@ -9,6 +9,8 @@ local clangd_ops = {
     local function buf_set_keymap(...)
       vim.api.nvim_buf_set_keymap(bufnr, ...)
     end
+    -- 禁止diagnostic
+    vim.diagnostic.disable(bufnr)
     -- 绑定快捷键
     require("keybindings").mapLSP(buf_set_keymap)
   end,
